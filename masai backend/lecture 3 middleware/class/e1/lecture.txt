@@ -1,0 +1,32 @@
+--> Types of node modules : 3
+    -> inbuilt --> http,fs, crypto
+    -> custome  --> sum modules
+    -> external --> nodemon,express
+
+
+--> Types of middleware : 3
+    -> inbuilt  middleware  server.use(express.json())
+    -> custome  middleware   
+    -> external middleware
+
+note: ware : jo sepical sutible purpose ka liya bana hua hota hota
+
+
+--middleware access to request and response both
+-- middleware is in between requests and responses
+-- middleware is a function 
+
+--> work of middleware
+  1. middleware can be use to manipulate request body
+    
+
+
+
+==> what should be in between the client and the school endpoint?
+--> middleware(gatepeeker)
+
+--> how to use middleware in the express
+=> middleware will be a function
+
+server.use(middleware_function_name) 
+

@@ -1,0 +1,8 @@
+ THe methos is GET and the api endpoint is  /home
+                    and the time is Sun Jul 14 2024 17:41:50 GMT+0530 (India Standard Time) 
+ THe methos is GET and the api endpoint is  /cart
+                    and the time is Sun Jul 14 2024 17:41:58 GMT+0530 (India Standard Time) 
+ THe methos is POST and the api endpoint is  /school
+                    and the time is Sun Jul 14 2024 17:42:05 GMT+0530 (India Standard Time) 
+ THe methos is GET and the api endpoint is  /about
+                    and the time is Sun Jul 14 2024 17:42:16 GMT+0530 (India Standard Time) 

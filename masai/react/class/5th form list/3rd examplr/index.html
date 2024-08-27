@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function Child1(Props) {
+        let name="mahipal"
+        Props.getName(name)
+        return <div>
+            <h1>Child1</h1>
+            </div>
+    }
+    function Child2(props) {
+        return <div>
+            <h1>Child2</h1>
+            </div>
+    }
+    function App() {
+        function getName(name){
+            return <h1>your name is {name}</h1>
+        }
+        return <div>
+            <Child1 getName={getName}/>
+            <Child2 />
+            </div>
+    }
+        
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</html>

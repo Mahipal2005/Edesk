@@ -1,0 +1,4 @@
+
+Error:ID should be a number
+Name should be a string
+Rating should be a number

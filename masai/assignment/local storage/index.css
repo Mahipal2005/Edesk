@@ -1,0 +1,11 @@
+h1{
+    color: blue;
+    text-decoration: underline;
+
+}
+table{
+    margin:50px auto;
+}
+table>thead{
+    background-color: rgb(207, 219, 219);
+}

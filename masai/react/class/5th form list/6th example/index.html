@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [form, setforms] = React.useState({
+        name: "",
+        age: null,
+        Country: "",
+        isMarried: false,
+      });
+      //   const [name, setName] = React.useState("");
+      //   const [age, setAge] = React.useState(null);
+      //   const [Country, setCountry] = React.useState("");
+      //   const [isMarried, setIsMarried] = React.useState(false);
+      function setNamehandel(e) {
+        setName(e.target.value);
+      }
+      function setAgehandel(e) {
+        setAge(e.target.value);
+      }
+      function setCountryhandel(e) {
+        setCountry(e.target.value);
+      }
+      function setIsMarriedhandel(e) {
+        setIsMarried(e.target.checked);
+      }
+      function submitForm(e) {
+        e.preventDefault();
+        let obj = {
+          name,
+          age,
+          Country,
+          isMarried,
+        };
+        // console.log(name,age,Country,isMarried)
+        console.log(obj);
+      }
+      return (
+        <form onSubmit={submitForm}>
+          <label>
+            Name : <input type="text" value={setforms.name} onChange={setNamehandel} />
+          </label>
+          <hr color="white" />
+          <label>
+            Age : <input type="Number" value={setforms.age} onChange={setAgehandel} />
+          </label>
+          <hr color="white" />
+
+          <label>
+            Country :{" "}
+            <select value={setforms.Country} onChange={setCountryhandel}>
+              <option value="">Select Country</option>
+              <option value="India">India</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+              <option value="Dubai">Dubai</option>
+            </select>
+          </label>
+          <hr color="white" />
+
+          <label>
+            Is married :{" "}
+            <input
+              type="checkbox"
+              checked={setforms.isMarried}
+              onChange={setIsMarriedhandel}
+            />
+          </label>
+          <hr color="white" />
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</html>

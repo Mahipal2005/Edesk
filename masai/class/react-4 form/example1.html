@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+//     function ToDoList() {
+//   const [toDoList, setToDoList] = React.useState([
+//     { id: 1, description: "Item 1" },
+//     { id: 2, description: "Item 2" },
+//     { id: 3, description: "Item 3" },
+//     { id: 4, description: "Item 4" },
+//   ]);
+
+//   return (
+//     <div>
+//       <ul>
+//         {toDoList.map((item) => {
+//           return <li key={item.id}>{item.description}</li>;
+//         })}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <ToDoList />
+//     </div>
+//   );
+// }
+function TodoList({toDoList}) {
+    
+    return (
+        <div>
+            {toDoList.map((item) => {
+                return <li key={item.id}>{item.description}</li>;
+            })}
+        </div>
+    )
+}
+function App(){
+    const [toDoList, setToDoList] = React.useState([
+    { id: 1, description: "Item 1" },
+    { id: 2, description: "Item 2" },
+    { id: 3, description: "Item 3" },
+    { id: 4, description: "Item 4" },
+  ]);
+    return (
+        <div>
+            <h1>Hello</h1>
+            <TodoList toDoList={toDoList} />
+            </div>
+    )
+}
+
+ReactDOM.render(<App/>, document.getElementById("root"));
+
+  </script>
+</html>

@@ -1,0 +1,38 @@
+#btn{
+    text-align: center;
+}
+.user_detail{
+    width: 75%;
+    margin:2% auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.user_detail>div{
+    height: 340px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+    border-radius: 10px;
+}
+.user_detail img{
+    margin-top: 10px;
+    height: 200px;
+}
+@media all and (min-width:700px) and (max-width:1100px){
+    .user_detail{
+        width: 75%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20px;
+    }
+}
+@media all and (max-width:775px){
+    .user_detail{
+        width: 100%;
+        /* margin: auto; */
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        /* gap: 20px; */
+    }
+}

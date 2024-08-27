@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 10px;
+      }
+      #container > div {
+        text-align: center;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+      #container img {
+        margin-top: 20px;
+        width: 100px;
+      }
+      #nav {
+        height: 60px;
+        width: 100%;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: space-around;
+        padding-top: 2%;
+      }
+      #nav > a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+      }
+      #nav > a:hover {
+        color: rgb(135, 0, 0);
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="nav">
+      <a href="#nav">Main</a>
+      <a href="#">Add elment</a>
+      <div>
+        <input placeholder="Enter Product" type="text" />
+        <button id="searchbar">🔎</button>
+      </div>
+      <a href="#">Cart</a>
+      <a href="#">Signup&Login</a>
+    </div>
+    <div>
+      <select name="" id="navbar-select">
+        <option value="">Sort By Value</option>
+        <option value="asc">Asscending</option>
+        <option value="dese">Descending</option>
+      </select>
+    </div>
+    <form action="">
+      <input type="text" placeholder="image link"/>
+      <input type="text" placeholder="Product Name"/>
+      <input type="text" placeholder="product Price"/>
+      <input type="text" placeholder="product description"/>
+      <input type="submit" name="" id="" />
+    </form>
+    <div id="container"></div>
+  </body>
+</html>
+<script>
+  let container = document.getElementById("container");
+
+  let inputbox = document.querySelector("#nav > div>input");
+  let searchBtn = document.querySelector("#nav > div>#searchbar");
+  let selectPrice = document.querySelector("#navbar-select");
+  let form = document.querySelector("form");
+  let product = [
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 568,
+      description: "Est tempore eos do",
+      name: "Mobile",
+      image:
+        "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/u/v/h/-original-imagxaqtzmqgtfen.jpeg?q=70",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 741,
+      description: "Est tempore eos do",
+      name: "Clothes",
+      image:
+        "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/u/t/7/m-bd201-blue-dove-original-imagxyrbafzdzyxb.jpeg?q=70",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 258,
+      description: "Est tempore eos do",
+      name: "Footwear",
+      image:
+        "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/l/v/r/7-397898-7-puma-white-peacoat-high-risk-red-original-imagt5usjh6eywgh.jpeg?q=70",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 963,
+      description: "Est tempore eos do",
+      name: "Camera",
+      image:
+        "https://rukminim2.flixcart.com/image/300/300/kw9krrk0/dslr-camera/q/l/w/-original-imag8z5wwaqtq9bz.jpeg?q=90",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 369,
+      description: "Est tempore eos do",
+      name: "Glasses",
+      image:
+        "https://rukminim2.flixcart.com/image/612/612/kn7sdjk0/sunglass/0/b/w/57-vc-s13830-vincent-chase-original-imagfyduh8atxmta.jpeg?q=70",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 321,
+      description: "Est tempore eos do",
+      name: "Headphone",
+      image:
+        "https://rukminim2.flixcart.com/image/612/612/ksqeky80/headphone/x/r/m/rma2011-realme-original-imag68fe7xdnavuh.jpeg?q=70",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 123,
+      description: "Est tempore eos do",
+      name: "AC",
+      image:
+        "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/f/k/h/-original-imagybevqzzfccag.jpeg?q=70",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 456,
+      description: "Est tempore eos do",
+      name: "Electirc vichal",
+      image:
+        "https://rukminim2.flixcart.com/image/312/312/xif0q/electric-bike-scooter/e/r/p/-original-imagzhp49hwfavrj.jpeg?q=70",
+    },
+    {
+      id: 722,
+      title: "In officiis doloribu",
+      price: 654,
+      description: "Est tempore eos do",
+      name: "TV",
+      image:
+        "https://rukminim2.flixcart.com/image/312/312/xif0q/television/l/s/o/-original-imagzu9ux26bsefy.jpeg?q=70",
+    },
+  ];
+  // product.forEach((ele) => {
+  //   let div = document.createElement("div");
+
+  //   let image = document.createElement("img");
+  //   image.src = ele.image;
+  //   let name = document.createElement("h3");
+  //   name.innerText = ele.name;
+  //   let price = document.createElement("h4");
+  //   price.innerText = ele.price;
+  //   let description = document.createElement("p");
+  //   description.innerText = ele.description;
+
+  //   div.append(image, name, price, description);
+  //   container.append(div);
+  // });
+  showData(product);
+  function showData(arr) {
+    container.innerHTML = "";
+    arr.forEach((ele, i) => {
+      let div = document.createElement("div");
+
+      let image = document.createElement("img");
+      image.src = ele.image;
+      let name = document.createElement("h3");
+      name.innerText = ele.name;
+      let price = document.createElement("h4");
+      price.innerText = ele.price;
+      let description = document.createElement("p");
+      description.innerText = ele.description;
+      let del = document.createElement("button");
+      del.innerHTML = "Remove ";
+      del.addEventListener("click", function () {
+        deleteData(i);
+      });
+      div.append(image, name, price, description, del);
+      container.append(div);
+    });
+  }
+  function sortdata() {
+    let value = selectPrice.value;
+    let narr;
+    if (value == "asc") {
+      narr = product.sort((a, b) => a.price - b.price);
+    } else {
+      narr = product.sort((a, b) => b.price - a.price);
+    }
+    showData(narr);
+  }
+  function addData(ele) {
+    ele.preventDefault();
+    let inputs = ele.target;
+    let img = inputs[0].value;
+    let name = inputs[1].value;
+    let price = inputs[2].value;
+    let des = inputs[3].value;
+
+    let obj = {
+      id: 722,
+      title: "name",
+      price: price,
+      description: des,
+      name: name,
+      image: img,
+    };
+    product.push(obj)
+    showData(product)
+  }
+  function deleteData(ind) {
+    let Deldata = product.splice(ind, 1);
+    showData(product);
+  }
+  function search() {
+    let input = inputbox.value;
+    let narr = product.filter(function (ele, i) {
+      return ele.name.toLowerCase() == input.toLowerCase();
+    });
+    if (narr.length > 0) {
+      showData(narr);
+    } else {
+      container.innerHTML = "<h1>This Product is not found</h1>";
+    }
+  }
+  searchBtn.addEventListener("click", search);
+  selectPrice.addEventListener("change", sortdata);
+  form.addEventListener("submit", function (event) {
+    addData(event);
+  });
+</script>

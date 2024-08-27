@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function UserProfile({ img, name }) {
+      return (
+        <div className="user-list--item">
+          <img src={img} alt={name} />
+          <h2>{name}</h2>
+        </div>
+      );
+    }
+
+    function App() {
+      let [users, setUsers] = React.useState([
+    { id: 1, name: "John" , img:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"},
+    { id: 2, name: "Jane" , img:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"},
+    { id: 3, name: "Jack" , img:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"},
+    { id: 4, name: "Jill" , img:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"},
+    { id: 5, name: "Joe" , img:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"},
+  ]);
+
+      return (
+        <div className="user-list">
+          {users.map((user) => {
+            return (
+              <UserProfile
+                img={user.img}
+                name={`${user.name} `}
+              />
+            );
+          })}
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</html>

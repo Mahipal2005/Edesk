@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="firstNum" type="text" placeholder="enter 1st Number">
+    <input type="text" name="" id="seconNum" placeholder="enter 2nd Number">
+    <br>
+    <button onclick="Add()">Add</button>
+    <button onclick="Subtract()">Subtract</button>
+    <button onclick="Multiply()">Multiply</button>
+    <button onclick="Divide()">Divide</button>
+</body>
+</html>
+<script>
+    function Add() {
+        var firstNum = document.getElementById("firstNum").value;
+        var secondNum = document.getElementById("seconNum").value;
+        var result = Number(firstNum) + Number(secondNum);
+        alert(`${result} as ans`);
+    }
+
+    function Subtract() {
+        var firstNum = document.getElementById("firstNum").value;
+        var secondNum = document.getElementById("seconNum").value;
+        var result = Number(firstNum) - Number(secondNum);
+        alert(`${result} as ans`);
+    }
+    function Multiply() {
+        var firstNum = document.getElementById("firstNum").value;
+        var secondNum=document.getElementById("seconNum").value;
+        var result = Number(firstNum) * Number(secondNum);
+        alert(`${result} as ans`);
+    }
+    function Divide() {
+        var firstNum = document.getElementById("firstNum").value;
+        var secondNum=document.getElementById("seconNum").value;
+        var result = Number(firstNum) / Number(secondNum);
+        alert(`${result} as ans`);
+    }
+</script>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const userProfiles = [
+      {
+        name: "John Doe",
+        username: "johndoe",
+        email: "johndoe@me.com",
+        phone: "555-555-5555",
+        website: "johndoe.me",
+        company: {
+          name: "Example Inc.",
+        },
+        address: {
+          street: "123 Main St.",
+          city: "New York",
+          state: "NY",
+          zip: "10001",
+        },
+      },
+      {
+        name: "Jane Doe",
+        username: "janedoe",
+        email: "janedoe@me.com",
+        phone: "555-555-5555",
+        website: "janedoe.me",
+        company: {
+          name: "Example Inc.",
+        },
+        address: {
+          street: "123 Main St.",
+          city: "New York",
+          state: "NY",
+          zip: "10001",
+        },
+      },
+      {
+        name: "Alice",
+        username: "alice",
+        email: "alice@me.com",
+        phone: "555-555-5555",
+        website: "alice.me",
+        company: {
+          name: "Example Inc.",
+        },
+        address: {
+          street: "123 Main St.",
+          city: "New York",
+          state: "NY",
+          zip: "10001",
+        },
+      },
+      {
+        name: "Bob",
+        username: "bob",
+        email: "bob@me.com",
+        phone: "555-555-5555",
+        website: "bob.me",
+        company: {
+          name: "Example Inc.",
+        },
+        address: {
+          street: "123 Main St.",
+          city: "New York",
+          state: "NY",
+          zip: "10001",
+        },  
+      },
+    ];
+
+    const UserProfile = ({ name, username, email, phone, website, company, address }) => {
+      return (
+        <div>
+          <h1>{name}</h1>
+          <p>Username: {username}</p>
+          <p>Email: {email}</p>
+          <p>Phone: {phone}</p>
+          <p>Website: {website}</p>
+          <p>Company: {company.name}</p>
+          <p>Address: {address.street}, {address.city}, {address.state} {address.zip}</p>
+        </div>
+      );
+    };
+
+    const App = () => {
+      const [searchTerm, setSearchTerm] = React.useState('');
+      const [filteredProfiles, setFilteredProfiles] = React.useState(userProfiles);
+
+      const handleSearch = (event) => {
+        setSearchTerm(event.target.value);
+        setFilteredProfiles(userProfiles.filter(profile => profile.name.toLowerCase().includes(searchTerm.toLowerCase())));
+      };
+
+      return (
+        <div>
+          <input type="text" value={searchTerm} onChange={handleSearch} />
+          <ul>
+            {filteredProfiles.map(profile => (
+              <li key={profile.username}>
+                <UserProfile {...profile} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+
+  </script>
+</html>

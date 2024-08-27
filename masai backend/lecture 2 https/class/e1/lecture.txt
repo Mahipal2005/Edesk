@@ -1,0 +1,35 @@
+create a server
+--> get request from client and i wil send back the response 
+--> client can request anytime --> i have to continuously listen on incoming request
+
+--> server it's a process in system (system process), i have to give it a port number.
+
+
+
+problem :- every change re-runing the server 
+--> external modules : store (npm)=> nodemon
+ FIXME:nodemon means =>node mon => node monitor => it will monitor the changes in the file(iska use karna par huma har changes ka bad sever ko rerun nhi karna paraga)
+
+
+start a backend project
+npm init --y
+
+to use nodemon:-
+--> add a scripts and run the command
+
+
+//TODO: FIXME:when using express server
+
+tow thing in our API
+--> endpoin like "/cart"
+-->  http verbs like "GET"
+
+
+
+to test you api's
+==> two tools
+    1. extension vs code : thunder client
+    2. postman FIXME: we can use only postman
+
+
+

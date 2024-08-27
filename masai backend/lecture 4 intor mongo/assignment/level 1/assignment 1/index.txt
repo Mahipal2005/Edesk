@@ -1,0 +1,90 @@
+1. What is a NoSQL Database, and explain the types of NoSQL database?
+Ans . full form - NOt Structured Query Language
+      it is not Structured . it is flexible. NoSQL will store data in objects form.
+      types of NoSQL :-
+            MongoDB, Cassandra
+
+
+2. What is the difference between SQL and NoSQL databases?
+Ans . SQL - 
+        SQL is less flexible.
+        example:-
+            MySQL,Oracle SQL, PostgreSQL
+      NoSQL -
+        NoSQL is more flexible.
+        NoSQL data sore in object forms
+        example:-
+            MongoDB,Cassandra
+
+3. How to choose between MongoDB and MySQL based on your requirements?
+Ans. 
+    MongoDB stores data in object form, while MySQL stores data in table format.
+    MongoDB supports high complex data types , whereas MySQL supports low complex data types.
+    MongoDB is batter for real-time data analysis and flexible data , while MySQL is batter for traditional enterprise applications and complex query operations.
+
+4. What are collections and documents in a MongoDB database?
+Ans. 
+    documents :- documents is a pair of key and value . 
+        example :-{
+            name : "Mahipal",
+            age : 30,
+            email:"mahipal@example.com",
+        }
+    collections :- collections is a collction of documents
+        example :- A user collction can store multiple user documents.
+
+5. What is BSON? What is the difference between BSON and JSON?
+Ans.
+    When we are storing data in MongoDB, the data format is like JSON, but MongoDB stores it internally by converting it to BSON (Binary JSON). 
+    BSON format is a binary format.
+
+    differences between BSON and JSON :-
+        a. JSON data is based on text format while BSON is based on binary format data.
+        b. JSON supports limited data examples : string number , boolean,object and null while BSON supports differnt types of data , examples: binary data, date,other custome type of data
+
+6. What are MongoDB Compass and MongoDB Shell used for?
+Ans. 
+    MongoDB Compass:-
+    MongoDB Compass is a GUI for the data visulation, explor and manage.
+    it will be used for doing crud operations
+
+    MongoDB shell :- 
+    MongoDB shell is CLI while used to interact with monogoDB database
+    it will be used for doing crud operations
+
+7. How to create collections in MongoDB?
+Ans 
+    query : db.createCollection(" write collction name")
+
+8. What is the difference between insertMany and insertOne?
+Ans 
+    insertOne : insertOne is  used to insert one documents
+        query: db.collectionName.insertOne({ key1: "value1", key2: "value2" })
+
+    insertMany : insertMany is used to insert multiple documents (data) at once.
+        query: db.collectionName.insertMany([{ key1: "value1", key2: "value2" },{ key1: "value3", key2: "value4" },{ key1: "value5", key2: "value6" }])
+
+9. What is the difference between deleteOne and deleteMany?
+Ans.
+    deleteOne: deleteOne is used to delete a document that matches the given criteria.
+        query: db.collectionName.deleteOne({key1: "value1"})
+
+    deleteMany:  deleteMany is used to delete multiple documents that match the given criteria.
+        query: db.collectionName.deleteMany({ key1: "value1" })
+
+10. How to read data in MongoDB? What is the difference between find and findOne?
+Ans .
+    used query: db.collectionName.find()
+
+    find is show all data but findone is show only single data
+    db.collectionName.findOne({ key1: "value1" })
+
+
+11. What is $set in MongoDB?
+Ans .
+    $set is a MongoDB operator that used for update documents and inserts new data
+    query : db.collectionName.updateOne({ _id: 1 },{ $set: { fieldName: "newValue" } })
+
+12. How to filter data using MongoDB?
+Ans .
+    In MongoDB we are using filter data to perform logical and compression operations

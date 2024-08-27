@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [hobbies, setHobbies] = React.useState([""]);
+     const addHobby = () => {
+        setHobbies([...hobbies, ""]); 
+      };
+      const removeHobby = (index) => {
+        setHobbies(hobbies.filter((_, i) => i !== index));
+      };
+      return (
+        <div>
+          {hobbies.map((hobby, index) => (
+            <div key={index}>
+              <input
+                type="text"
+                value={hobby}
+                onChange={(e) => {
+                  setHobbies(hobbies.map((h, i) => (i === index ? e.target.value : h)));
+                }}
+              />
+              <button onClick={() => removeHobby(index)}>Remove</button>
+            </div>
+          ))}
+          <button onClick={addHobby}>Add</button>
+          <button
+            onClick={() => {
+              console.log(hobbies);
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</html>

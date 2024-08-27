@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signup</title>
+  </head>
+  <body>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./signup.html">Sign Up</a>
+      <a id="lognam" href="./login.html">Login</a>
+    </nav>
+    <main>
+      <div id="signUp">
+        <h3>Signup Here...</h3>
+        <input id="name" placeholder="Enter Name" type="text">
+        <input id="email" placeholder="Enter email" type="email">
+        <input id="password" placeholder="Enter password" type="password">
+        <button id="button">Signup</button>
+      </div>
+    </main>
+  </body>
+</html>
+<script>
+  let button = document.getElementById("button");
+  button.addEventListener("click",()=>{
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let user={name,email,password}
+    fetch('http://localhost:3000/users',{
+      method:"POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify(user)
+    })
+    .then(() => {
+      alert("Signed in successfully , Please login")
+      window.location.href="./login.html"
+    }).catch((err) => {
+      alert("Couldn't sign in")
+    });
+  });
+</script>

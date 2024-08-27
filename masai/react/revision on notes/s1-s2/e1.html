@@ -1,0 +1,50 @@
+<!-- 
+//FIXME: this program in imperative programming
+//in this program we are give only program and with give instruction  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create UI with DOM & JS</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript">
+      const element = document.createElement("p");
+      element.textContent = "Carpe Diem";
+      element.className = "quote";
+      const rootElement = document.getElementById("root");
+      rootElement.appendChild(element);
+    </script>
+  </body>
+</html>
+
+<!-- 
+//FIXME: this program in declarative programming
+//in this program we are give only program don't give instruction  -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create UI With React API</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<p className="quote">Carpe Diem</p>);
+  </script>
+</html> -->

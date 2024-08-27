@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #parent {
+        text-align: center;
+        margin: auto;
+        width: 600px;
+      }
+      #parent > div > div {
+        height: 60px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        display: flex;
+        padding: 10px;
+        gap: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <button id="fetc">Fetch Todos</button>
+    </div>
+  </body>
+</html>
+<script>
+  let parent = document.getElementById("parent");
+  let fetc = document.getElementById("fetc");
+
+  function showData(data) {
+      let div = document.createElement("div");
+    parent.innerHTML =  '<button id="fetc">Fetch Todos</button>';
+    data.forEach((element) => {
+      let div1 = document.createElement("div");
+      let p = document.createElement("p");
+      p.innerText = element.title;
+      let input = document.createElement("input");
+      input.type = "checkbox";
+      if (element.completed) {
+        input.checked = true;
+      }
+      div1.appendChild(p);
+      div1.appendChild(input);
+      div.appendChild(div1);
+      parent.appendChild(div);
+    });
+  }
+
+  fetc.addEventListener("click", () => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => res.json())
+      .then((todos) => showData(todos));
+  });
+</script>

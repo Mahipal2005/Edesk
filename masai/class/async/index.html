@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // var a=10;
+    // let b=20;
+    // // let c;
+    // var c;
+    // function add(a,b,c){
+    //     return a+b+c;
+    // }
+    // console.log(add(a,b,c));
+    // c=10
+    // function daleyedFunciton() {
+    //     console.log("hi, there");
+    // }
+    // setTimeout(daleyedFunciton, 1000);
+    // i = 0;
+    // let mahi = setInterval(() => {
+    //   console.log("hi, there", i);
+    //   i++;
+    //   if (i == 10) {
+    //     clearInterval(mahi);
+    //   }
+    // }, 1000);
+    // let a=10
+    // let b=20
+    // function parent(callback) {
+    //     let sum=a+b
+    //     let call =print(sum)
+
+    // }
+    // function print(value) {
+    //     return value*10
+
+    // }
+    // parent(print)
+    // console.log(a);
+    // var a=10;
+    // setTimeout(mahi,4000)
+    // setTimeout(choudhary,2000)
+    // setTimeout(jat,8000)
+    // let b=20;
+    // let mypromise=new Promise(function(resolve,reject){
+    //   // reject()
+    //   // resolve()
+
+    // })
+    // console.log(mypromise);
+
+    // FIXME:
+
+    let j = Math.floor(Math.random(2) * 5);
+    console.log(j);
+    let myPromise = new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        if (j) {
+          resolve("promise completed");
+        } else {
+          reject("promise rejected");
+        }
+      }, 2000);
+    });
+    myPromise
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // console.log(mypromise);
+  </script>
+
+  <!-- call back or hof in pytutor\\ -->
+  <!-- creation phase or education phase -->
+</html>

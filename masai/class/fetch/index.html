@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch</title>
+    <style>
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      #container > div {
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+        height: 500px;
+        width: 300px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      #container > div > img {
+        max-width: 100%;
+        height: 30vh;
+      }
+      @media all and (min-width:800px) and (max-width:1300px) {
+        #container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+      @media all and (max-width:800px)  {
+        #container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <select>
+      <option>categories</option>
+      <option value="electronics">electronics</option>
+      <option value="jewelery">jewelery</option>
+      <option value="men's clothing">men's clothing</option>
+      <option value="women's clothing">women's clothing</option>
+    </select>
+  </body>
+</html>
+<script>
+  let select = document.querySelector('select');
+  let url;
+  let body = document.querySelector("body");
+  let div = document.createElement("div");
+  url="https://fakestoreapi.com/products"
+  select.addEventListener('change', (e) => {
+    mahi=select
+    div.innerHTML=""
+    url=`https://fakestoreapi.com/products/category/${mahi.value}`
+    // console.log(mahi.value);
+    fetchData(url)
+  });
+
+
+  function showdata(Data) {
+    Data.forEach((ele, i) => {
+      let div1 = document.createElement("div");
+      div.id = "container";
+      let p = document.createElement("p");
+      // p.innerText=ele.description
+      let h1 = document.createElement("h1");
+      h1.innerText = ele.title;
+      let h2 = document.createElement("h2");
+      h2.innerText = ele.category;
+      let h3 = document.createElement("h3");
+      h3.innerText = ele.price;
+      let image = document.createElement("img");
+      image.src = ele.image;
+
+      div1.appendChild(image);
+      div1.appendChild(h1);
+      div1.appendChild(h2);
+      div1.appendChild(h3);
+      div1.appendChild(p);
+      div.appendChild(div1);
+      body.appendChild(div);
+    });
+  }
+function fetchData(url){
+
+  let data = fetch(url);
+  data
+  .then((res) => res.json())
+  .then((Data) => showdata(Data))
+  .catch((err) => console.log(err));
+}
+fetchData(url)
+</script>

@@ -1,0 +1,54 @@
+const personSchema=new mongoose.Schema({
+    name:String,
+    age:Number,
+    city:String,
+    email:String
+})  
+
+const PersonModel=mongoose.model("Person",personSchema)
+
+const passportSchema=new mongoose.Schema({
+    number:String,
+    expiry:String,
+    passportNumber:Number,
+    PersonId: {type: mongoose.Schema.Types.ObjectId, ref: 'Person'}
+})
+
+/// this method is called refrencing
+
+person collection =>{
+    name,
+    email,
+    age,
+    email,
+    post:[{
+        title,
+        content,
+    },{},{},]
+
+}
+--> this method is called embedding
+embedding benifits:-
+performance,
+--> a user has billion posts
+--> a document max size 16MB is disadvantage
+--> disadvantage:- document size , duplicate data save in array
+
+--> best way  refrencing
+person collection =>{
+    name,
+    email,
+    age,
+    email
+}
+post collection =>
+{
+    title,
+    content,
+    personId
+}
+
+const person = db.CN.person.find()
+const posts=db.CN.post.find({personId=person._id})
+adv:-avoid duplicate data save in array
+

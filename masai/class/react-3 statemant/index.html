@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    //     function App() {
+    //   const [message, setMessage] = React.useState(""); // State for input value
+
+    //   const handleChange = (event) => {
+    //     setMessage(event.target.value); // Update state based on input
+    //   };
+
+    //   return (
+    //     <div>
+    //       <input
+    //         value={message}
+    //         onChange={handleChange}
+    //         placeholder="Type a message"
+    //       />
+    //       <p>Your message: {message}</p>
+    //     </div>
+    //   );
+    // }
+    function App() {
+      const [message, setMessage] = React.useState("");
+
+      const handleChange = (event) => {
+        setMessage(event.target.value);
+      };
+
+      const handleReset = () => {
+        setMessage(""); // Resets the message state, thus clearing the input field
+      };
+
+      return (
+        <div>
+          <p>
+            Message: <strong>{message}</strong>
+          </p>
+          <input
+            placeholder="Add your message here"
+            onChange={handleChange}
+            value={message} // Controlled component
+          />
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</html>

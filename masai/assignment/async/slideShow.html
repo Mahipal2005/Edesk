@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider images</title>
+    <style>
+        #images>img{
+            width: 450px;
+            height: 600px;
+            max-width: 100%;
+        }
+        body{
+            width: 50%;
+            margin: 2% auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 2%;
+            text-align: center;
+        }
+        #buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+        /* Styles for the buttons */
+#buttons {
+  text-align: center;
+}
+
+#previous {
+  background-color: #e91818; /* Light red */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#stop {
+  background-color: #007cf8; /* Light blue */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#next {
+  background-color: #00ff00; /* Light green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+/* Hover effect for each button */
+#previous:hover {
+  background-color: #ff6666; /* Red */
+}
+
+#stop:hover {
+  background-color: #6699ff; /* Blue */
+}
+
+#next:hover {
+  background-color: #66ff66; /* Green */
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="images"></div>
+    <div id="buttons">
+      <button id="previous">previous</button>
+      <button id="stop">Start</button>
+      <button id="next">next</button>
+    </div>
+  </body>
+</html>
+<script>
+    let previous=document.getElementById("previous");
+    let stop=document.getElementById("stop");
+    let next=document.getElementById("next");
+
+
+  let imageDiv = document.querySelector("#images");
+  let arr = [
+    "https://images.unsplash.com/photo-1607992922515-7e38329e65d4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlJTIwaW1hZ2VzfGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1626594995085-36b551227b9a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlJTIwaW1hZ2VzfGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1544961371-516024f8e267?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1591889179105-a3f153522288?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1628826949658-cfde8510e658?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1616285798798-945ebab6583f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1602975109095-475e987e7fda?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1618155471414-f805febdddca?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1616731948670-5e2be3508561?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1609581321511-9dd37bf7f985?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1599906823892-321f8347dfcd?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://plus.unsplash.com/premium_photo-1675827055620-24d540e0892a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://plus.unsplash.com/premium_photo-1673873437968-c7f06f88545f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1608923868510-d38b4fc81d60?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://plus.unsplash.com/premium_photo-1689685156566-427e74ac8a3b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1580644501213-a672803a1edd?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1613501366590-e50f18b71528?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1615821290549-0270a5cb0c73?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1615569082599-865be05af048?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fG5hdHVyZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D",
+  ];
+  i = 0;
+  let img = document.createElement("img");
+  img.src = arr[i];
+  let mahi;
+  imageDiv.appendChild(img);
+ 
+
+stop.addEventListener("click",()=>{
+    if(stop.innerText=="Start"){
+        Mahi=setInterval(function () {
+    if(i>19){
+        i = 0;
+    }
+    img.src = arr[i];
+    i++;
+    imageDiv.appendChild(img);
+    stop.innerText ="Stop" 
+  }, 1100);
+    }
+    else if(stop.innerText=="Stop"){
+        clearInterval(Mahi);
+        stop.innerText="Start";
+    }
+   
+})
+
+previous.addEventListener("click", ()=>{
+    stop.innerText ="Start"
+    i--;
+    if(i <0){
+        i=arr.length-1;
+        
+    }
+    img.src = arr[i];
+    imageDiv.appendChild(img);
+    clearInterval(Mahi);
+})
+
+next.addEventListener("click", ()=>{
+    stop.innerText ="Start"
+    i++;
+    if(i>arr.length-1){
+        i=0;
+    }
+    img.src = arr[i];
+    imageDiv.appendChild(img);
+    clearInterval(Mahi);
+});
+
+
+</script>

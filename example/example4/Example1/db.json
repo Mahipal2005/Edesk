@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "name": "John",
+      "rollNo": 1,
+      "class": "10",
+      "section": "A"
+    },
+    {
+      "id": "3c76",
+      "name": "MAHIPAL",
+      "rollNo": "123",
+      "class": "55",
+      "section": "A"
+    },
+    {
+      "id": "ddc0",
+      "name": "Mahi",
+      "rollNo": "22",
+      "class": "15",
+      "section": "B"
+    },
+    {
+      "id": "b73c",
+      "name": "yesh",
+      "rollNo": "50",
+      "class": "55",
+      "section": "A"
+    },
+    {
+      "id": "6563",
+      "name": "a",
+      "rollNo": "s",
+      "class": "s",
+      "section": "A"
+    },
+    {
+      "id": "4893",
+      "name": "1",
+      "rollNo": "1",
+      "class": "1",
+      "section": "B"
+    },
+    {
+      "id": "0d26",
+      "name": "b",
+      "rollNo": "5",
+      "class": "4",
+      "section": "A"
+    }
+  ]
+}

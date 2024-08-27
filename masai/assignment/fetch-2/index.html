@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(156, 156, 156);
+        height: 80px;
+        margin: auto;
+        align-items: center;
+      }
+      nav > a:hover {
+        color: blue;
+      }
+      nav a {
+        text-decoration: none;
+        font-size: x-large;
+        font-weight: 600;
+      }
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 15px;
+      }
+      @media all and (max-width:1000px){
+        #container{
+          grid-template-columns: repeat(3,1fr);
+        }
+        
+      }
+      @media all and (max-width:600px){
+        #container{
+          grid-template-columns: repeat(2,1fr);
+        }
+        
+      }
+      #container > div {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        text-align: center;
+        border-radius: 10px;
+        padding-bottom: 20px;
+      }
+      #container > div >img{
+        max-width: 100%;
+      }
+         body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    h5 {
+      text-align: center;
+    }
+
+    #container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .product h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .product h4 {
+      margin: 5px 0;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .product h5 {
+      margin: 5px 0;
+      color: #666;
+      font-size: 14px;
+    }
+    #lognam{
+      color: black;
+      font-weight: 100;
+      font-size: small;
+    }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="/cart.html">Cart</a>
+      <a href="">Add Element</a>
+      <a href="./signup.html">Sign Up</a>
+      <a id="lognam" href="./login.html">Login</a>
+    </nav>
+    <header></header>
+    <main>
+    <div id="container"></div>
+    </main>
+  </body>
+</html>
+    <script>
+    let loginUser=JSON.parse(localStorage.getItem('loginUser'));
+   
+    let welcome=document.getElementById('lognam')
+    welcome.textContent=`Welcome ${loginUser.name}`;
+
+      let container=document.getElementById("container");
+      async function getData() {
+          try {
+              let res = await fetch('http://localhost:3000/products');
+              let data = await res.json();
+              display(data)
+          } catch (error) {
+              console.error('Error fetching data:', error);
+          }
+      }
+  function display(arr){
+      arr.forEach((element,i) => {
+          let cart=document.createElement('div');
+          cart.className='product';
+          let image=document.createElement('img');
+          image.src=element.src;
+          let title=document.createElement('h3');
+          title.innerHTML=`Title : ${element.title}`;
+          let price=document.createElement('h4');
+          price.innerHTML=`Price : ${element.price}`;
+          let rating=document.createElement('h5')
+          rating.innerHTML=`Rating :${element.ratings}`;
+          let addBtn=document.createElement('button');
+          addBtn.innerHTML=`Add to Cart` 
+          addBtn.addEventListener('click',()=>{
+            addCart(element,i)
+          })
+
+  
+          cart.append(image,title,price,rating,addBtn);
+          container.appendChild(cart);
+  
+  
+      });
+  }
+  getData();
+
+
+
+async function addCart(el,i){
+  let res = await fetch("http://localhost:3000/allUsersCart");
+  let data = await res.json();
+
+  
+  if( data[loginUser.name]){
+    data[loginUser.name].push(el)
+  }
+  else{
+    data[loginUser.name] =[];
+    data[loginUser.name].push(el);
+  }
+
+  fetch("http://localhost:3000/allUsersCart", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(data) 
+  })
+  .then(() => {
+   alert("product added to cart");
+
+  })
+  .catch((err) => {
+    console.log("err", err);
+  });
+
+}
+
+
+  let header=document.querySelector('header');
+  if(loginUser){
+    button=document.createElement('button');
+    button.innerHTML="logout";
+    header.appendChild(button);
+    button.addEventListener('click',()=>{
+      localStorage.removeItem("loginUser")
+  alert("Looged out")
+  window.location.href="./login.html";
+    })
+  }
+  </script>

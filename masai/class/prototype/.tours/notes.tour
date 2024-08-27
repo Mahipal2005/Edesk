@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "notes",
+  "steps": [
+    {
+      "file": "class.js",
+      "description": "classic language :- C# , java , js etc \r\nnote :- classic language kya hota ha",
+      "line": 62
+    }
+  ]
+}

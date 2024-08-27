@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop Watch</title>
+    <style>
+      * {
+        text-align: center;
+        background-color: #000;
+        box-sizing: border-box;
+      }
+      body {
+        height: 30vh;
+        width: 35vw;
+        margin: 50px auto;
+        padding: 10px;
+        /* box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; */
+        box-shadow: 0px 0px 10px 10px rgb(202, 123, 123);
+        border-radius: 20px;
+      }
+      h2{
+        color: white;
+      }
+      .button-1 {
+        background-color: #26ff00;
+        border-radius: 8px;
+        border-style: none;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 14px;
+        list-style: none;
+        margin: 0;
+        outline: none;
+        padding: 10px 16px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button-1:hover,
+      .button-1:focus {
+        background-color: #84ff7b;
+      }
+      .button-2 {
+        background-color: #2600ff;
+        border-radius: 8px;
+        border-style: none;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 14px;
+        list-style: none;
+        margin: 0;
+        outline: none;
+        padding: 10px 16px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button-2:hover,
+      .button-2:focus {
+        background-color: #4191ed;
+      }
+      .button-3 {
+        background-color: #ff0000;
+        border-radius: 8px;
+        border-style: none;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 14px;
+        list-style: none;
+        margin: 0;
+        outline: none;
+        padding: 10px 16px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .button-3:hover,
+      .button-3:focus {
+        background-color: #ff7b7bc0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="timer">
+      <h2>00:00</h2>
+    </div>
+    <div id="controls">
+      <button class="button-1" role="button" id="start">Start</button>
+      <button class="button-2" role="button" id="pause">Pause</button>
+      <button class="button-3" role="button" id="reset">Reset</button>
+    </div>
+  </body>
+</html>
+<script>
+  var start = document.getElementById("start");
+  var stop = document.getElementById("pause");
+  var reset = document.getElementById("reset");
+  var timer = document.getElementById("timer");
+  var h2 = document.querySelector("#timer>h2");
+  var sec = 0;
+  var min = 0;
+  var hour = 0;
+  var minsec = 0;
+  var Mahi;
+
+  function startTimer() {
+    Mahi = setInterval(function () {
+      minsec++;
+      if ((min == 0) & (hour == 0)) {
+        h2.innerHTML = `${sec}:${minsec}`;
+      } else if (hour == 0) {
+        h2.innerHTML = `${min}:${sec}:${minsec}`;
+      } else {
+        h2.innerHTML = `${hour}:${min}:${sec}`;
+      }
+      if (minsec >= 100) {
+        sec++;
+        minsec = 0;
+      } else if (sec > 59) {
+        min++;
+        sec = 0;
+        minsec = 0;
+      } else if (min > 59) {
+        hour++;
+        min = 0;
+        sec = 0;
+        minsec = 0;
+      }
+    }, 10);
+  }
+
+  function stopTimer() {
+    clearInterval(Mahi);
+  }
+
+  function resetTimer() {
+    clearInterval(Mahi);
+    hour = 0;
+    min = 0;
+    sec = 0;
+    minsec = 0;
+    h2.innerHTML = `${sec}:${minsec}`;
+  }
+
+  start.addEventListener("click", startTimer);
+  stop.addEventListener("click", stopTimer);
+  reset.addEventListener("click", resetTimer);
+</script>

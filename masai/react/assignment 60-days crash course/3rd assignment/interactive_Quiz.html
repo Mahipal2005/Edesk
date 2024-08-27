@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function App() {
+            const [score, setScore] = React.useState(0);
+            const [question, setQuestion] = React.useState(0);
+            const [answer, setAnswer] = React.useState(null);
+            const [showScore, setShowScore] = React.useState(false);
+
+            const questions = [
+                {
+                    question: "What is the capital of France?",
+                    options: ["New York", "London", "Paris", "Berlin"],
+                    answer: "Paris",
+                },
+                {
+                    question: "What is the largest country in the world?",
+                    options: ["Russia", "Canada", "China", "USA"],
+                    answer: "China",
+                },
+                {
+                    question: "What is the smallest country in the world?",
+                    options: ["Vatican City", "Monaco", "San Marino", "Malta"],
+                    answer: "Vatican City",
+                },
+            ];
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (answer === questions[question].answer) {
+                    setScore(score + 1);
+                }
+                if (question + 1 < questions.length) {
+                    setQuestion(question + 1);
+                    setAnswer(null);
+                } else {
+                    setShowScore(true);
+                }
+            };
+
+            const handleRestart = () => {
+                setScore(0);
+                setQuestion(0);
+                setAnswer(null);
+                setShowScore(false);
+            };
+
+            return (
+                <div>
+                    {showScore ? (
+                        <div>
+                            <h1>Your Score: {score}</h1>
+                            <button onClick={handleRestart}>Restart</button>
+                        </div>
+                    ) : (
+                        <div>
+                            <h1>{questions[question].question}</h1>
+                            <form onSubmit={handleSubmit}>
+                                {questions[question].options.map((option, index) => (
+                                    <div key={index}>
+                                        <input
+                                            type="radio"
+                                            name="answer"
+                                            value={option}
+                                            checked={option === answer}
+                                            onChange={(e) => setAnswer(e.target.value)}
+                                        />
+                                        <label>{option}</label>
+                                    </div>
+                                ))}
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+  <nav>
+    <a href="./index.html">Home</a>
+      <a href="./signup.html">Sign Up</a>
+      <a id="lognam" href="./login.html">Login</a>
+  </nav>
+    <main>
+        <div id="login">
+            <h3>login Here...</h3>
+            <input id="lemail" placeholder="Enter email" type="email">
+            <input id="lpassword" placeholder="Enter password" type="password">
+            <button id="lbutton">login</button>
+          </div>
+    </main>
+</body>
+</html>
+<script>
+   
+ 
+   let lbutton = document.getElementById("lbutton");
+    lbutton.addEventListener("click", () => {
+      let email = document.getElementById("lemail").value;
+      let password = document.getElementById("lpassword").value;
+      fetch('http://localhost:3000/users')
+        .then((result) => {
+          return result.json()
+        }).then((response) => {
+          let flag=false;
+          response.forEach((element) => {
+            if (element.email == email) {
+                  flag=true
+                if (element.password == password) {
+                //   localStorage.setItem("loginUser", "Hello");
+                  localStorage.setItem("loginUser", JSON.stringify(element))
+                alert("Login successful");
+                window.location.href="./index.html"
+              } else {
+                alert('Wrong password')
+              }
+            } 
+          });
+          if(flag==false){
+
+            alert("User Not found Please Regester");
+            window.location.href="./signup.html";
+          }
+        })
+        .catch((err) => {
+          console.log(err, "error");
+        });
+    });
+
+</script>

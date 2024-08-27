@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function SuperheroDetails({name,hobbies,hasSuperPowers,address,age}) {
+      return (
+        <div>
+          <h1 style={{color:"green"}}>Name:{name}</h1>
+          <h2 style={{color:"blue"}}>Hobbies: {hobbies.length>0?hobbies:"No Hobbies"}</h2>
+          <h3 style={{color:"red"}}>Are they super powers? : {hasSuperPowers?"Yes":"No"}</h3>
+          <h4 style={{color:"grey"}}>Address:{address}</h4>
+          <h5 style={{color:"Yellow"}}>Age:{age}</h5>
+        </div>
+      );
+    }
+    function App() {
+      let props = {
+        name: "Superman",
+        hobbies: "fly",
+        hasSuperPowers: true,
+        address: "los angeles",
+        age: 18,
+      };
+      return (
+        <div>
+          <SuperheroDetails {...props} />
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create UI With React API</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function Feed() {
+      return <div style={{border:"2px solid red"}}>Feed</div>;
+    }
+    function Leftsidebar() {
+      return <div style={{border:"2px solid black"}}>Leftsidebar</div>;
+    }
+    function Rightsidebar() {
+      return <div style={{border:"2px solid green"}}>Rightsidebar</div>;
+    }
+    function returnNumber(){
+        return Math.floor(Math.random()*10)+1
+    }
+    function Footoor(){
+        const theme=returnNumber();
+        if(theme<=5){
+            return <div>Number{theme} is less than 5</div>
+        }
+        else{
+            return <div>Number{theme} is greater than 5</div>
+        }
+
+    }
+    function Navbar(){
+        return (
+            <div style={{backgroundColor:"red",margin:"10px"}}>Navbar</div>)
+    }
+    function Layout(props) {
+      return (
+        <div
+          style={{ display: "grid", gridTemplateColumns: "35% 40% 35%" }}
+        >{props.children}
+        </div>
+      );
+    }
+    function Main() {
+      return (
+        <>
+        <Navbar/>
+          <Layout>
+            <Leftsidebar />
+            <Feed />
+            <Rightsidebar />
+          </Layout>
+          <Footoor/>
+        </>
+      );
+    }
+    function App() {
+      return (
+        <>
+          <Main />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</html>

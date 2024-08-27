@@ -1,0 +1,16 @@
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+.card label{
+  display: flex;
+  margin: 5px;
+}
+.card input[type=submit] {
+  width: 100px;
+}

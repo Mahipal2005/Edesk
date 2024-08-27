@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+      // Step-by-Step:
+      // Define the Gallery Component: Create a Gallery component that accepts children as its prop. This component will serve as a container for the images you want to display.
+      // Render Children Within a Grid Layout: Inside your Gallery component, use a grid layout to organize and display the children elements. This layout will allow the images to be presented neatly regardless of their number.
+      // Usage: Utilize the Gallery component by passing Image components as its children. This simulates a dynamic gallery where images can be added or removed as needed.
+    function Gallery({ children }) {
+        return (<div className="gallery-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(600px, 1fr))", gridGap: "10px" }}>{children}</div>)
+    }
+    function Image({src}){
+        
+        return (
+            <img src={src} alt="not valid image" />
+        )
+    }
+ReactDOM.createRoot(document.getElementById("root")).render(<Gallery>
+  <Image src="https://img.freepik.com/free-photo/beautiful-shot-crystal-clear-lake-snowy-mountain-base-during-sunny-day_181624-5459.jpg?size=626&ext=jpg" />
+  <Image src="https://img.freepik.com/free-photo/wet-vietnam-mountain-flow-stream-rural_1417-1357.jpg?size=626&ext=jpg" />
+</Gallery>)
+
+
+
+  </script>
+</body>
+</html>

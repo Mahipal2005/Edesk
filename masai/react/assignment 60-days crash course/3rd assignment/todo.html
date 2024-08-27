@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function App() {
+      function TodoList() {
+        const [todo, setTodo] = React.useState([]);
+        const [newTodo, setNewTodo] = React.useState("");
+        const addTodo = () => {
+          setTodo([...todo, { id: Date.now(), text: newTodo, completed: false }]);
+          setNewTodo("");
+        };
+        function Remove(id) {
+          setTodo(prevtodos=>prevtodos.filter(todo=>todo.id!==id))
+        }
+        function toggleTodo(id) {
+          setTodo((prevtodo) =>
+            prevtodo.map((todo) =>
+              todo.id === id ? { ...todo, completed: !todo.completed } : todo
+            )
+          );
+        }
+
+        return (
+          <div>
+            <input
+              type="text"
+              name=""
+              id=""
+              value={newTodo}
+              onChange={(e) => {
+                setNewTodo(e.target.value);
+              }}
+            />
+            <button onClick={addTodo}>Add</button>
+            <ul>
+              {todo.map((todo) => (
+                <li
+                  key={todo.id}
+                  style={{
+                    textDecoration: todo.completed ? "line-through" : "none",
+                  }}
+                >
+                  {todo.text}
+                  <button onClick={() => toggleTodo(todo.id)}>Toggle</button>
+                  <button onClick={() => Remove(todo.id)}>Remove</button>
+                </li> 
+              ))}
+            </ul>
+          </div>
+        );
+      }
+
+      return (
+        <div>
+          <h1>Todo List</h1>
+          <TodoList />
+        </div>
+      );
+      
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+</html>

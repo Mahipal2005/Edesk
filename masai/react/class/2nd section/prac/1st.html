@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create UI With React API</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    //TODO: without using component
+    // const element = (
+    //   <>
+    //     <p>Happy birthday</p>
+    //     <p>Happy birthday</p>
+    //   </>
+    // );
+
+    //TODO: with using const
+    // const message = <p>Happy Birthday</p>;
+    // const element = (
+    //   <>
+    //     {message}
+    //     {message}
+    //   </>
+    // );
+
+    //TODO: with using function
+
+    // function greet({ text, name }) {
+    //   return (
+    //     <p>
+    //       {text},{name}
+    //     </p>
+    //   );
+    // }
+
+    // const element = (
+    //   <div className="container">
+    //     {greet({ text: "Happy Birthday!" ,name: "MAHIPAL" })}
+    //     {greet({ text: "Happy Birthday!" ,name: "MAHIPAL" })}
+    //   </div>
+
+    // );
+
+    const card = ({ title, content }) => {
+      return (
+        <p>
+          {title},{content}
+        </p>
+      );
+    };
+    function aler() {
+      return alert("hello");
+    }
+    const App = () => {
+      return (
+        <div>
+          {card({ title: "Developer", content: "Website" })}
+          
+
+          <button onClick={aler}>Click ME</button>
+        </div>
+      );
+    };
+    const element = <App></App>;
+    ReactDOM.createRoot(document.getElementById("root")).render(element);
+  </script>
+</html>
